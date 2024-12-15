@@ -1,0 +1,67 @@
+<%- include('partials/header.ejs') %>
+<!-- banner  -->
+<div class="col-md-10 container mt-3">
+  <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+      <button
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+        class="active"
+        aria-current="true"
+      ></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <img src="images/home-banner2.png" alt="home-banner2" class="carousel-img" style="height: 360px" />
+      </div>
+      <div class="carousel-item active">
+        <img src="images/home-banner.png" alt="home-banner" class="carousel-img" style="height: 360px" />
+      </div>
+      <div class="carousel-item">
+        <img src="images/home-banner3.png" alt="home-banner3" class="carousel-img" style="height: 360px" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- date text  -->
+<div class="col-md-10 container date-text">
+  <h3 class="pb-4 mb-4 mt-4 fst-italic border-bottom">Date : <%= currentDate %></h3>
+</div>
+
+<!-- posts -->
+
+<% posts.forEach((post) => { %>
+<div class="col-md-10 container posts pb-4 mb-4 border-bottom">
+  <article class="blog-post">
+    <h2 class="display-5 link-body-emphasis mb-1"><%= post.title %></h2>
+    <p class="blog-post-meta"><%= post.date %> by <a href="/">Shawn</a></p>
+    <p><%= post.content %></p>
+  </article>
+
+  <div class="d-flex gap-2">
+    <form action="/post/view/<%= post.id %>" method="get">
+      <button class="btn btn-outline-primary rounded-pill">View</button>
+    </form>
+    <form action="/post/edit/<%= post.id %>" method="get">
+      <button class="btn btn-outline-primary rounded-pill" >Edit</button>
+    </form>
+    <form action="/post/delete/<%= post.id %>" method="post">
+      <button class="btn btn-outline-primary rounded-pill" >Delete</button>
+    </form>
+  </div>
+</div>
+
+<% }) %>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+
+<%- include('partials/footer.ejs') %>

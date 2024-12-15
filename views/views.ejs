@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+
+<div class="view-page container">
+  <h1 class="contact-h1 my-5 d-flex justify-content-center align-items-center"><%= post.title %></h1>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <p class="view-content"><%= post.content %></p>
+  </div>
+
+  <div class="d-flex justify-content-end gap-2">
+    <form action="/post/edit/<%= post.id %>" method="get">
+      <button class="btn btn-outline-primary rounded-pill" >Edit</button>
+    </form>
+    <form action="/post/delete/<%= post.id %>" method="post">
+      <button class="btn btn-outline-primary rounded-pill" >Delete</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
